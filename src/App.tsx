@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import TaskList from './components/TaskList';
+import PetSimulator from './components/PetSimulator';
+import { GeometryCalculator } from './components/GeometryCalculator';
+import LibraryApp from './components/Library/LibraryApp';
+import ContactApp from './components/contact/ContactApp';
+import { Navbarr } from './Navbar';
+import { Home } from './Home';
 
-function App() {
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+ 
+    <Navbarr />
+    <Routes>
+
+    <Route path='/task' element= { <TaskList/> } />
+    <Route path='/simulador' element= { <PetSimulator /> } />
+    <Route path='/geometry' element= { <GeometryCalculator/> } />
+    <Route path='/library' element= { <LibraryApp/> } />
+    <Route path='/contact' element= { <ContactApp/> } />
+    <Route path='/Home' element= { <Home/> } />
+    
+    
+    {/* Comodin */}
+    <Route path='/*' element= { < Navigate to=  "/Home" /> } />
+
+  </Routes>
+    
+    </>
   );
 }
-
-export default App;
